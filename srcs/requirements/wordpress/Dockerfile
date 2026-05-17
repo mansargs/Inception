@@ -1,6 +1,6 @@
 FROM debian:bullseye-slim
 
-ENV PHP_VERSION 7.4
+ENV PHP_VERSION=7.4
 
 RUN apt-get update \
 	&& apt-get upgrade -y \

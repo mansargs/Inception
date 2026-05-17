@@ -31,7 +31,7 @@ services:
 
   wordpress:
     container_name: wordpress
-    image: my-wordpress:php-fpm
+    image: my-wordpress
     build: ./requirements/wordpress/
     env_file: .env
     restart: unless-stopped
@@ -72,4 +72,4 @@ secrets:
   wp_user_password:
     file: ./secrets/wordpress/wp_user_password.txt
   wp_root_password:
-    file: ./secrets/wp_root_password.txt
+    file: ./secrets/wordpress/wp_root_password.txt
