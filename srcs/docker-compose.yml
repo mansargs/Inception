@@ -25,6 +25,9 @@ services:
       - inception
     volumes:
       - mariadb-volume:/var/lib/mysql
+    secrets:
+      - db_password
+      - db_root_password
 
   wordpress:
     container_name: wordpress
@@ -38,6 +41,10 @@ services:
       - wordpress-volume:/var/www/html/
     depends_on:
       - mariadb
+    secrets:
+      - db_password
+      - wp_user_password
+      - wp_root_password
 
 volumes:
   wordpress-volume:
@@ -56,3 +63,13 @@ volumes:
 networks:
   inception:
     driver: bridge
+
+secrets:
+  db_password:
+    file: ./secrets/maria_db/db_password.txt
+  db_root_password:
+    file: ./secrets/maria_db/db_root_password.txt
+  wp_user_password:
+    file: ./secrets/wordpress/wp_user_password.txt
+  wp_root_password:
+    file: ./secrets/wp_root_password.txt
